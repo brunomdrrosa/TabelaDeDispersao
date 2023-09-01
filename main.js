@@ -51,6 +51,13 @@ function programa(nomeArquivo, tamanhoTabela) {
     frasesMinusculas = frasesMinusculas.replace(ROMAN_NUMERALS, "");
     frasesMinusculas = frasesMinusculas.replace(/--/g, " ").split(/\s+/);
 
+    // Lista de caracteres para remoção que não conseguimos remover com Regex
+    const caracteresParaRemover = ["", "-", "c", "l", "d", "f", "m"];
+
+    frasesMinusculas = frasesMinusculas.filter(
+      (word) => !caracteresParaRemover.includes(word)
+    );
+
     // Objeto para contar quantas vezes cada palavra se repete
     var contadorDePalavras = {};
 
@@ -109,6 +116,7 @@ function programa(nomeArquivo, tamanhoTabela) {
   });
 }
 
+// Função para calcular o índice com base no valor passado e no tamanho da tabela
 function hash(value, M) {
   return value % M;
 }
