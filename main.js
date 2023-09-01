@@ -26,7 +26,7 @@ function menu() {
       programa("tinytale.txt", 293);
       rl.close();
     } else if (answer === "2") {
-      programa("tale.txt", 10559);
+      programa("tale.txt", 10531);
       rl.close();
     } else {
       console.log("Digite um número de 1 a 2\n");
@@ -51,11 +51,17 @@ function programa(nomeArquivo, tamanhoTabela) {
     frasesMinusculas = frasesMinusculas.replace(ROMAN_NUMERALS, "");
     frasesMinusculas = frasesMinusculas.replace(/--/g, " ").split(/\s+/);
 
-    // Lista de caracteres para remoção que não conseguimos remover com Regex
-    const caracteresParaRemover = ["", "-", "c", "l", "d", "f", "m"];
+    // Lista de palavras para remoção que não conseguimos remover com Regex
+    const palavrasParaRemover = ["", "-", "c", "l", "d", "f", "m", "httpgutenbergnetlicense", 
+    "trademarkcopyright", "httppglaforgfundraising", "business@pglaforg", "gbnewby@pglaforg", 
+    "httppglaforgdonate"];
 
+    // Remover hífen no final das palavras
+    frasesMinusculas = frasesMinusculas.map(word => word.endsWith('-') ? word.slice(0, -1) : word);
+
+    // Filtrar palavras indesejadas
     frasesMinusculas = frasesMinusculas.filter(
-      (word) => !caracteresParaRemover.includes(word)
+      (word) => !palavrasParaRemover.includes(word)
     );
 
     // Objeto para contar quantas vezes cada palavra se repete
