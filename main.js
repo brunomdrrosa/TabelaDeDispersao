@@ -112,13 +112,15 @@ function programa(nomeArquivo, tamanhoTabela) {
       }
 
       const objeto = {
+        posicao: posicao,
         palavra: palavra,
         quantidade: quantidade,
       };
 
       arrayFinal[posicao] = objeto;
     }
-    console.table(arrayFinal);
+    const arrayOrdenado = arrayFinal.sort((a, b) => b.quantidade - a.quantidade);
+    console.table(arrayOrdenado);
   });
 }
 
