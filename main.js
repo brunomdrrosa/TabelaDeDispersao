@@ -1,7 +1,7 @@
 // Nomes: Bruno Machado e Lucas Scaratti
 // Disciplina: Estrutura de Dados Avançada
 // Professor: Elmario Gomes Dutra Jr.
-// Data: 06/09/2023
+// Data: 05/09/2023
 
 const fs = require("fs");
 const readline = require("readline");
